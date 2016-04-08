@@ -1,0 +1,20 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                 controllers.Application.index
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/fonts/*file               controllers.Assets.at(path="/public/lib/font-awesome/fonts", file)
+GET     /assets/*file                     controllers.Assets.versioned(path="/public", file: Asset)
+
+# Logging
+POST    /logging                          controllers.Application.logging
+
+# OAuth2 Stuff
+GET     /_oauth-callback                  util.OAuth2.callback(code: Option[String], state: Option[String])
+GET     /_oauth-success                   util.OAuth2.success
+
+# WebSocket
+GET     /subscribe                        controllers.Application.subscribe
